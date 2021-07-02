@@ -1,47 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-
-using UnityEngine;
+﻿using System.Threading.Tasks;
 using Verse;
-using Verse.AI;
-using Verse.AI.Group;
-using Verse.Sound;
-using Verse.Noise;
-using Verse.Grammar;
 using RimWorld;
-using RimWorld.Planet;
 
-//using System.Reflection;
-//using HarmonyLib;
-
-namespace Template
+namespace AllowEggs
 {
-    [DefOf]
-    public class TemplateDefOf
-    {
-        public static LetterDef success_letter;
-    }
+	public class AllowEggsMapComponent : MapComponent
+	{
 
-    public class MyMapComponent : MapComponent
-    {
-        public MyMapComponent(Map map) : base(map){}
-        public override void FinalizeInit()
-        {
-            Messages.Message("Success", null, MessageTypeDefOf.PositiveEvent);
-            Find.LetterStack.ReceiveLetter("Success", TemplateDefOf.success_letter.description, TemplateDefOf.success_letter, null);
-        }
-    }
+		const int k_ticks_threshold = 3317;
+		int _ticks = 0;
 
-    [StaticConstructorOnStartup]
-    public static class Start
-    {
-        static Start()
-        {
-            Log.Message("Mod template loaded successfully!");
-        }
-    }
+		public AllowEggsMapComponent ( Map map ) : base(map) {}
 
+		public override void MapComponentTick ()
+		{
+			if( ++_ticks==k_ticks_threshold )
+			{
+				Task.Run( Routine );
+				_ticks = 0;
+			}
+		}
+
+		/// <remarks> List is NOT thread-safe so EXPECT it can be changed by diffent CPU thread, mid-execution, anytime here.</remarks>
+		void Routine ()
+		{
+			var playerFaction = Faction.OfPlayer;
+			var list = map.listerThings.ThingsInGroup( ThingRequestGroup.FoodSource );
+			for( int i=0 ; i<list.Count ; i++ )
+			{
+				Thing thing = list[i];
+				if( thing.def.defName.StartsWith("Egg") && thing.IsForbidden(playerFaction) )
+					thing.SetForbidden( false );
+			}
+		}
+
+	}
 }

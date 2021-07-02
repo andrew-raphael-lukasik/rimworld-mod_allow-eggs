@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-	<packageId>arvkus.template</packageId>
-	<name>Arvkus Mod Template</name>
-	<author>Arvkus</author>
+	<packageId>AndrewRaphaelLukasik.AllowEggs</packageId>
+	<name>Allow Eggs</name>
+	<author>Andrew Raphael Lukasik</author>
 	<supportedVersions>
 		<li>1.2</li>
 	</supportedVersions>
@@ -20,5 +20,9 @@
 		<!-- <li>arvkus.template</li> -->
 	</incompatibleWith>
 
-	<description>Template</description>
+	<description>Simple mod that auto-allows eggs spawning in the wild. Yup. That's it.
+
+Source code:
+	https://github.com/andrew-raphael-lukasik/rimworld-mod_allow-eggs
+</description>
 </ModMetaData>
