@@ -1,4 +1,4 @@
-"Allow Eggs" mod for RimWorld 1.3, (1.2)[https://github.com/andrew-raphael-lukasik/rimworld-mod_allow-eggs/tree/1.2]
+"Allow Eggs" mod for RimWorld 1.3, [1.2](https://github.com/andrew-raphael-lukasik/rimworld-mod_allow-eggs/tree/1.2)
 
 https://steamcommunity.com/sharedfiles/filedetails/?id=2534505462
 
