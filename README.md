@@ -1,4 +1,4 @@
-"Allow Eggs" mod for RimWorld 1.4, 1.3, 1.2
+"Allow Eggs" mod for RimWorld 1.2 - 1.6
 
 https://steamcommunity.com/sharedfiles/filedetails/?id=2534505462
 
